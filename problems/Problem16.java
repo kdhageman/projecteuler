@@ -2,7 +2,7 @@ package problems;
 
 public class Problem16 {
 	 
-	public static void main(String[] args) {
+	public Problem16(){
 		int[] digits = new int[350];
 		digits[349] = 1; /* 2^0 = 1 */
 
@@ -25,6 +25,14 @@ public class Problem16 {
 		for (int i : digits) {
 			sum += i;			
 		}
-		System.out.println(sum);		
+		System.out.format("Result: %d\n", sum);	
+	}
+	
+	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		new Problem16();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);
 	}	
 }

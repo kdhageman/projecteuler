@@ -6,7 +6,7 @@ import general.Functions;
 
 public class Problem23 {
 
-	public static void main(String[] args) {
+	public Problem23(){
 		ArrayList<Integer> an = new ArrayList<Integer>(); /* abundant numbers */
 		/* All abundant numbers below our threshold */
 		for (int i=1; i<=28123; i++){
@@ -36,6 +36,14 @@ public class Problem23 {
 				s += i;
 			}
 		}
-		System.out.println(s);
+		System.out.format("\nResult: %d\n", s);
+	}
+	
+	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		new Problem23();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);
 	}
 }

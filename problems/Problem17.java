@@ -6,7 +6,7 @@ public class Problem17 {
 	
 	static HashMap<Integer, Integer> hm;
 	
-	public static void main(String[] args) {
+	public Problem17(){
 		hm = initHashMap();
 		
 		int sum = 0;
@@ -14,7 +14,15 @@ public class Problem17 {
 			sum += numLetters(i, 0);
 		}
 		sum += 3; /* special case: 100 = one + hundred, rather than just hundred */
-		System.out.println(sum);
+		System.out.format("Result: %d\n", sum);
+	}
+	
+	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		new Problem17();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);
 	}
 	
 	public static int numLetters(int n, int l){

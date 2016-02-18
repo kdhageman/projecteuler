@@ -4,24 +4,26 @@ import java.util.ArrayList;
 
 public class Problem24 {
 
-	public static void main(String[] args) {
+	public Problem24(){
 		ArrayList<Integer> l = new ArrayList<Integer>();
-		l.add(0);
-		l.add(1);
-		l.add(2);
-		l.add(3);
-		l.add(4);
-		l.add(5);
-		l.add(6);
-		l.add(7);
-		l.add(8);
-		l.add(9);
+		for (int i=0; i<= 9; i++){ /* add all elements to the list */
+			l.add(i);
+		}
+		
 		int c = 1;
 		while (c < 1000000){
 			l = nextPermutation(l);			
 			c++;
 		}
-		System.out.println(c + ": "+ l);
+		System.out.format("Result: %s\n", l);
+	}
+	
+	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		new Problem24();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);
 	}
 	
 	public static ArrayList<Integer> nextPermutation( ArrayList<Integer> list){

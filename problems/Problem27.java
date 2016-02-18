@@ -6,7 +6,7 @@ import general.Functions;
 
 public class Problem27 {
 
-	public static void solveProblem(){
+	public Problem27(){
 		int nmax = -1;
 		int amax = -1;
 		int bmax = -1;
@@ -17,8 +17,7 @@ public class Problem27 {
 				boolean still_prime = true;
 				while(still_prime){					
 					int val = ((int) Math.pow(n, 2)) + (a*n) + b;
-					if (n > 1)
-						System.out.format("Trying a=%d and b=%d, n=%d: %d\n", a, b, n, val);
+					
 					if (primes.contains(val)){ /* already saw this prime */
 						still_prime = true;						
 					}					
@@ -34,24 +33,21 @@ public class Problem27 {
 					n++;
 				}
 				if (n > nmax){
-					System.out.format("New max n=%d, a=%d * b=%d = %d\n", nmax, amax, bmax, amax*bmax);
+					
 					nmax = n;
 					amax = a;
 					bmax = b;
 				}
 			}
 		}
-		System.out.format("Maximum n=%d, a=%d * b=%d = %d\n", nmax, amax, bmax, amax*bmax);
-	}
-	
-	public static void testIsPrime(){
-		assert(Functions.isPrime(7) == true);
-		assert(Functions.isPrime(1000) == false);
-		assert(Functions.isPrime(-2) == false);
+		System.out.format("Result: %d\n", amax*bmax);
 	}
 	
 	public static void main(String[] args) {
-//		testIsPrime();
-		solveProblem();	
+		long start = System.currentTimeMillis();
+		new Problem27();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);	
 	}	
 }

@@ -2,7 +2,7 @@ package problems;
 
 public class Problem28 {
 
-	public static void solveProblem(int num_layers){
+	public Problem28(int num_layers){
 		long sum = 1; /* number 1 is at layer 0, so assume this */
 		long node_value = 1; /* keeps track of the current value of the node */
 		int layer = 1;
@@ -13,11 +13,15 @@ public class Problem28 {
 			}			
 			layer++;
 		}		
-		System.out.format("After %d layers, the sum of the diagonals is %d", layer, sum);
+		System.out.format("Result: %d\n", sum);
 	}	
 	
 	public static void main(String[] args) {
-		solveProblem(500);	
+		long start = System.currentTimeMillis();
+		new Problem28(500);		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);	
 	}	
 }
 

@@ -376,38 +376,65 @@ public class Functions {
 	}
 
 	/**
-	 * Computes the next permutation of int array n (https://www.nayuki.io/page/next-lexicographical-permutation-algorithm).
-	 * @param n
-	 * @return the next permutation.
+	 * Computes the next permutation of n in lexicographical order (https://www.nayuki.io/page/next-lexicographical-permutation-algorithm).
+	 * @param n 
+	 * @param decreasing indicates whether the permutations are computed in increased or decreased lexicographical order.
+	 * @return the next permutation if it exists; -1 otherwise.
 	 */
-	public static int[] nextPermutation(int[] n){
-		/* find longest non-increasing suffix */
-		int i = n.length - 1;
-	    while (i > 0 && n[i - 1] >= n[i])
-	        i--;
-		
-		if (i <= 0) return null;
-		
-		int j = n.length-1;
-		while(n[j] <= n[i-1]){
-			j--;
+	public static int nextPermutation(int n, boolean decreasing){
+		/* convert n to an int[] using a String */
+		String nString = Integer.toString(n);
+		int[] a = new int[nString.length()]; /* int array used to compute the next permutation */
+		for (int i=0; i<nString.length(); i++){
+			a[i] = Integer.parseInt(nString.substring(i, i+1));
 		}
 		
+		/* find longest non-increasing suffix */
+		int i = a.length - 1;
+		if (decreasing){
+			while (i > 0 && a[i-1] <= a[i])
+		        i--;
+		}
+		else{
+		    while (i > 0 && a[i - 1] >= a[i])
+		        i--;
+		}
+		
+		if (i <= 0) return -1;
+		
+		int j = a.length-1;
+		if (decreasing){
+			while(a[j] >= a[i-1]){
+				j--;
+			}
+		}
+		else{
+			while(a[j] <= a[i-1]){
+				j--;
+			}
+		}		
+		
 		/* swap n[i-1] and n[j] */
-		int tmp = n[i-1];
-		n[i-1] = n[j];
-		n[j] = tmp;
+		int tmp = a[i-1];
+		a[i-1] = a[j];
+		a[j] = tmp;
 		
 		 // Reverse the suffix
-	    j = n.length - 1;
+	    j = a.length - 1;
 	    while (i < j) {
-	        tmp = n[i];
-	        n[i] = n[j];
-	        n[j] = tmp;
+	        tmp = a[i];
+	        a[i] = a[j];
+	        a[j] = tmp;
 	        i++;
 	        j--;
 	    }
 		
-		return n;
+	    /* convert int[] back to int using String */
+	    nString = "";
+	    for (int d : a){
+	    	nString += Integer.toString(d);
+	    }
+	    
+		return Integer.parseInt(nString);
 	}
 }

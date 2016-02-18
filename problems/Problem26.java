@@ -6,7 +6,7 @@ import general.Functions;
 
 public class Problem26 {
 
-	public static void main(String[] args) {
+	public Problem26(){
 		int max = -1;
 		int dmax = -1;
 		for (int d=1000; d>=2; d--){
@@ -14,12 +14,18 @@ public class Problem26 {
 				int s = Functions.recurringCycleSize(new BigInteger(Integer.toString(d)));			
 				if (s > max){
 					max = s;
-					dmax = d;
-					System.out.format("%d for d=%d\n", s, d);
+					dmax = d;					
 				}
 			}
 		}				
-		System.out.format("Final results for d=%d: %d\n", dmax, max);
-//		System.out.println(Functions.recurringCycleSize(new BigInteger("7")));
+		System.out.format("Result: %d\n", dmax, max);
+	}
+	
+	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		new Problem26();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);
 	}	
 }

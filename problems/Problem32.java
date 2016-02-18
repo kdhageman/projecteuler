@@ -51,10 +51,11 @@ public class Problem32 {
 				products.add(product);				
 			}			
 		}
-		System.out.format("permutations: %d\npandigital products: %d\n", permutations.size(), res);
-		for (int i=0; i<products.size(); i++){
-			System.out.format("%d x %d = %d\n", mplicands.get(i), mpliers.get(i), products.get(i));
-		}
+//		System.out.format("permutations: %d\npandigital products: %d\n", permutations.size(), res);
+//		for (int i=0; i<products.size(); i++){
+//			System.out.format("%d x %d = %d\n", mplicands.get(i), mpliers.get(i), products.get(i));
+//		}
+		System.out.format("Result: %d\n", res);
 	}
 	
 	public static void main(String[] args) {

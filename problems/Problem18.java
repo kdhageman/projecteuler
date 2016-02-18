@@ -9,9 +9,17 @@ import general.TreeRow;
 
 public class Problem18 {
 	
-	public static void main(String[] args) {
+	public Problem18(){
 		TreeRow t = generateTree("C:/Users/Kaspar/Workspace/Project Euler/src/inputfiles/Problem18");		
-		System.out.println(t.maxTotal(0));
+		System.out.format("Result: %d\n", t.maxTotal(0));
+	}
+	
+	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		new Problem18();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);
 	}
 	
 	public static TreeRow generateTree(String fn){

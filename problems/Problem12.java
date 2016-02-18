@@ -4,7 +4,7 @@ import general.*;
 
 public class Problem12 {
 
-	public static void main(String[] args) {
+	public Problem12(){
 		int numr = 1; /* t(1)*/
 		int numl;
 		int i = 1;
@@ -17,6 +17,14 @@ public class Problem12 {
 				maxDivisors = numl*numr;
 			}
 			i++;
-		}		
+		}
+	}
+	
+	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		new Problem12();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);
 	}
 }

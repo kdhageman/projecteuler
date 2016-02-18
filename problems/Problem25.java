@@ -4,11 +4,9 @@ import general.LargeInt;
 
 public class Problem25 {
 
-	public static void main(String[] args) {
+	public Problem25(){
 		LargeInt fold = new LargeInt(1);
-		LargeInt fnew = new LargeInt(1);
-		System.out.format("f(1) = %s\n", fold.toString());
-		System.out.format("f(2) = %s\n", fnew.toString());
+		LargeInt fnew = new LargeInt(1);		
 		LargeInt tmp;
 		
 		int i = 2;
@@ -16,7 +14,7 @@ public class Problem25 {
 		int curr_digits = fnew.digits();
 		int max_digits = curr_digits;
 		
-		while (curr_digits < 10000){
+		while (curr_digits < 1000){
 			tmp = fnew.copy();
 			fnew.add(fold);			
 			fold = tmp;
@@ -24,9 +22,17 @@ public class Problem25 {
 			
 			curr_digits = fnew.digits();
 			if (curr_digits > max_digits){
-				max_digits = curr_digits;
-				System.out.format("f(%d).digits() = %d\n", i, max_digits);
+				max_digits = curr_digits;				
 			}
-		}		
+		}	
+		System.out.format("Result: %d\n", i);
+	}
+	
+	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		new Problem25();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);
 	}
 }

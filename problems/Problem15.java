@@ -4,7 +4,7 @@ public class Problem15 {
 
 	static long[][] routes;
 	
-	public static void main(String[] args) {
+	public Problem15(){
 		routes = new long[21][21];
 		routes[0][0] = 1;
 		/* height */
@@ -19,7 +19,15 @@ public class Problem15 {
 				}						
 			}
 		}
-		System.out.println(routes[20][20]);
+		System.out.format("Result: %d\n", routes[20][20]);
+	}
+	
+	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		new Problem15();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);
 	}
 	
 	public static int routes(int w, int h){

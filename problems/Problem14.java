@@ -14,11 +14,28 @@ public class Problem14 {
 		}
 	}
 	
+	public Problem14(){
+		int l = 0; /* longest chain */
+		for (int i=1; i<=1000000; i++){			
+			int c = 0; /* current chain length */
+			long n = i; /* current collatz number */
+			while (n != 1){
+				n = (n % 2 == 0 ? n/2 : 3*n + 1);
+				c++;			
+			}
+			if (c > l){
+				l = c;
+				System.out.format("chain increased to %d (for i=%d)\n", l, i);
+			}
+		}	
+	}
+	
 	public static void main(String[] args) {
-//		for (int i=1; i<=100; i++){
-//			System.out.println(normal(i));
-//		}
-		normal();
+		long start = System.currentTimeMillis();
+		new Problem14();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);
 	}
 	
 	public static void reverse(){
@@ -65,20 +82,5 @@ public class Problem14 {
 		}
 		return list;
 	}
-	
-	public static void normal(){
-		int l = 0; /* longest chain */
-		for (int i=1; i<=1000000; i++){			
-			int c = 0; /* current chain length */
-			long n = i; /* current collatz number */
-			while (n != 1){
-				n = (n % 2 == 0 ? n/2 : 3*n + 1);
-				c++;			
-			}
-			if (c > l){
-				l = c;
-				System.out.format("\nchain increased to %d (for i=%d)\n", l, i);
-			}
-		}		
-	}
+
 }

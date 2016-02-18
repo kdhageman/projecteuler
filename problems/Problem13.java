@@ -105,7 +105,7 @@ public class Problem13 {
             ,"53503534226472524250874054075591789781264330331690"};
 	static int[] result = new int[52]; /* remainders */	 
 	
-	public static void main(String[] args) {
+	public Problem13(){
 		int r = 0;
 		for (int i=49; i>=0; i--){
 			int sum = r;
@@ -120,10 +120,19 @@ public class Problem13 {
 		}
 		result[1] = r % 10;
 		result[0] = r / 10;
-		for (Integer e : result) {
-			System.out.format("%d", e);			
-		}
+		System.out.format("Result: ");
+		for (int i=0; i<10; i++){
+			System.out.format("%d", result[i]);
+		}		
 		System.out.println();
+	}
+	
+	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		new Problem13();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);
 	}
 }
  

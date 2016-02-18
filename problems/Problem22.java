@@ -8,7 +8,7 @@ import java.util.TreeSet;
 
 public class Problem22 {
 
-	public static void main(String[] args) {
+	public Problem22(){
 		TreeSet<String> set = loadNames("C:/Users/Kaspar/Workspace/Project Euler/src/inputfiles/Problem22");
 		long sum = 0;
 		int setIndex = 1;
@@ -16,7 +16,15 @@ public class Problem22 {
 			sum += setIndex * getNameScore(s);
 			setIndex ++;
 		}
-		System.out.println(sum);
+		System.out.format("Result: %d\n", sum);
+	}
+	
+	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		new Problem22();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);
 	}
 	
 	public static int getNameScore(String name){

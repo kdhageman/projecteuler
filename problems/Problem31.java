@@ -5,7 +5,7 @@ public class Problem31 {
 	static int[] coins = {2, 5, 10, 20, 50, 100, 200};
 	
 	public Problem31(){
-		System.out.println(p(200, 200, 0));
+		System.out.format("Result: %d\n", p(200, 200, 0));
 	}
 	
 	/* find number of ways to divide 'n' one-pennies */

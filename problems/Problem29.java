@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Problem29 {
 
-	public static void solveProblem(){
+	public Problem29(){
 		int[] arange = {2, 100};
 		int[] brange = {2, 100};
 		ArrayList<String> l = new ArrayList<String>();
@@ -17,12 +17,17 @@ public class Problem29 {
 					l.add(c.toString());
 				}
 			}
-		}
-		System.out.format("%d-%d=%d\n", (arange[1]-arange[0]+1)*(brange[1]-brange[0]+1), l.size(), (arange[1]-arange[0]+1)*(brange[1]-brange[0]+1)-l.size());
-	}	
+		}		
+		System.out.format("Result: %d\n", l.size());
+
+	}
+	
 	
 	public static void main(String[] args) {
-		solveProblem();	
-	}	
+		long start = System.currentTimeMillis();
+		new Problem29();		
+		
+		long end = System.currentTimeMillis();
+		System.out.format("Took %d ms in total\n", end-start);	}	
 }
 
