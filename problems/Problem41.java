@@ -1,7 +1,5 @@
 package problems;
 
-import java.util.Arrays;
-
 import general.Functions;
 
 public class Problem41 { 	
