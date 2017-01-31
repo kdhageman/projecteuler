@@ -1,4 +1,6 @@
-package problems;
+package solutions;
+
+import core.Solution;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,27 +8,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.TreeSet;
 
-public class Problem22 {
+public class Problem22 implements Solution {
 
-	public Problem22(){
-		TreeSet<String> set = loadNames("C:/Users/Kaspar/Workspace/Project Euler/src/inputfiles/Problem22");
-		long sum = 0;
-		int setIndex = 1;
-		for (String s : set){		
-			sum += setIndex * getNameScore(s);
-			setIndex ++;
-		}
-		System.out.format("Result: %d\n", sum);
-	}
-	
-	public static void main(String[] args) {
-		long start = System.currentTimeMillis();
-		new Problem22();		
-		
-		long end = System.currentTimeMillis();
-		System.out.format("Took %d ms in total\n", end-start);
-	}
-	
 	public static int getNameScore(String name){
 		int r=0;
 		for(char c : name.toCharArray()){
@@ -62,4 +45,20 @@ public class Problem22 {
 		return names;
 	}
 
+	@Override
+	public int number() {
+		return 22;
+	}
+
+	@Override
+	public void solve() {
+		TreeSet<String> set = loadNames("C:/Users/Kaspar/Workspace/Project Euler/src/inputfiles/Problem22");
+		long sum = 0;
+		int setIndex = 1;
+		for (String s : set){
+			sum += setIndex * getNameScore(s);
+			setIndex ++;
+		}
+		System.out.format("Result: %d\n", sum);
+	}
 }
