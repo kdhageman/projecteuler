@@ -1,6 +1,8 @@
-package problems;
+package solutions;
 
-public class Problem13 {
+import core.Solution;
+
+public class Problem13 implements Solution {
 	
 	static String[] inp = { 
 			 "37107287533902102798797998220837590246510135740250"
@@ -105,34 +107,32 @@ public class Problem13 {
             ,"53503534226472524250874054075591789781264330331690"};
 	static int[] result = new int[52]; /* remainders */	 
 	
-	public Problem13(){
+	@Override
+	public int number() {
+		return 13;
+	}
+
+	@Override
+	public void solve() {
 		int r = 0;
 		for (int i=49; i>=0; i--){
 			int sum = r;
 			for (String str : inp) {
-				int n = Integer.parseInt(str.substring(i, i+1));				
+				int n = Integer.parseInt(str.substring(i, i+1));
 				sum += n;
 			}
 			result[i+2] = sum % 10;
-			
+
 			r = sum / 10;
-			System.out.format("%d: %d with r: %d\n", i, sum, sum / 10);			
+			System.out.format("%d: %d with r: %d\n", i, sum, sum / 10);
 		}
 		result[1] = r % 10;
 		result[0] = r / 10;
 		System.out.format("Result: ");
 		for (int i=0; i<10; i++){
 			System.out.format("%d", result[i]);
-		}		
+		}
 		System.out.println();
-	}
-	
-	public static void main(String[] args) {
-		long start = System.currentTimeMillis();
-		new Problem13();		
-		
-		long end = System.currentTimeMillis();
-		System.out.format("Took %d ms in total\n", end-start);
 	}
 }
  

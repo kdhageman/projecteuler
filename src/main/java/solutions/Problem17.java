@@ -1,31 +1,14 @@
-package problems;
+package solutions;
+
+import core.Solution;
 
 import java.util.HashMap;
 
-public class Problem17 {
+public class Problem17 implements Solution {
 	
-	static HashMap<Integer, Integer> hm;
-	
-	public Problem17(){
-		hm = initHashMap();
-		
-		int sum = 0;
-		for (int i=1; i<= 1000; i++){
-			sum += numLetters(i, 0);
-		}
-		sum += 3; /* special case: 100 = one + hundred, rather than just hundred */
-		System.out.format("Result: %d\n", sum);
-	}
-	
-	public static void main(String[] args) {
-		long start = System.currentTimeMillis();
-		new Problem17();		
-		
-		long end = System.currentTimeMillis();
-		System.out.format("Took %d ms in total\n", end-start);
-	}
-	
-	public static int numLetters(int n, int l){
+	private HashMap<Integer, Integer> hm;
+
+	private int numLetters(int n, int l){
 		int res = 0;
 		
 		for (int i=0; i<l; i++){
@@ -92,6 +75,23 @@ public class Problem17 {
 		hm.put(100, 7); /* hundred != one hundred */
 		hm.put(1000, 11);
 		return hm;
+	}
+
+	@Override
+	public int number() {
+		return 17;
+	}
+
+	@Override
+	public void solve() {
+		hm = initHashMap();
+
+		int sum = 0;
+		for (int i=1; i<= 1000; i++){
+			sum += numLetters(i, 0);
+		}
+		sum += 3; /* special case: 100 = one + hundred, rather than just hundred */
+		System.out.format("Result: %d\n", sum);
 	}
 }
 
