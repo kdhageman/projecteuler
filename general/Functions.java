@@ -437,4 +437,66 @@ public class Functions {
 	    
 		return Integer.parseInt(nString);
 	}
+	
+	/**
+	 * Identical as nextPermutation(int n, boolean decreasing), except it works on String rather than integer, allowing integer starting with a 0.
+	 * @param n
+	 * @param decreasing
+	 * @return
+	 */
+	public static String nextPermutation(String n, boolean decreasing){
+		/* convert n to an int[] using a String */		
+		int[] a = new int[n.length()]; /* int array used to compute the next permutation */
+		for (int i=0; i<n.length(); i++){
+			a[i] = Integer.parseInt(n.substring(i, i+1));
+		}
+		
+		/* find longest non-increasing suffix */
+		int i = a.length - 1;
+		if (decreasing){
+			while (i > 0 && a[i-1] <= a[i])
+		        i--;
+		}
+		else{
+		    while (i > 0 && a[i - 1] >= a[i])
+		        i--;
+		}
+		
+		if (i <= 0) return null;
+		
+		int j = a.length-1;
+		if (decreasing){
+			while(a[j] >= a[i-1]){
+				j--;
+			}
+		}
+		else{
+			while(a[j] <= a[i-1]){
+				j--;
+			}
+		}		
+		
+		/* swap n[i-1] and n[j] */
+		int tmp = a[i-1];
+		a[i-1] = a[j];
+		a[j] = tmp;
+		
+		 // Reverse the suffix
+	    j = a.length - 1;
+	    while (i < j) {
+	        tmp = a[i];
+	        a[i] = a[j];
+	        a[j] = tmp;
+	        i++;
+	        j--;
+	    }
+		
+	    /* convert int[] back to int using String */
+	    n = "";
+	    for (int d : a){
+	    	n += Integer.toString(d);
+	    }
+	    
+		return n;
+	}
 }
