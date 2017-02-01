@@ -1,11 +1,11 @@
-package problems;
+package solutions;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import general.TreeRow;
+import util.TreeRow;
 
 public class Problem18 {
 	
