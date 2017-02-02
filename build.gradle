@@ -1,1 +1,22 @@
+apply plugin: 'application'
 apply plugin: 'java'
+
+mainClassName = 'core.Main'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.apache.logging.log4j:log4j-core:2.8'
+    compile 'org.reflections:reflections:0.9.9-RC1'
+}
+
+run {
+    if (project.hasProperty("runArgs")) {
+        args(Eval.me(runArgs))
+    }
+}

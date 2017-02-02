@@ -20,7 +20,12 @@ public class Main {
         try {
             int problemNumber = Integer.parseInt(args[0]);
             long start = System.currentTimeMillis();
-            problems.get(problemNumber).solve();
+            if (problems.containsKey(problemNumber)) {
+                problems.get(problemNumber).solve();
+            } else {
+                System.out.println("Cannot find specified problem");
+                return;
+            }
 
             long end = System.currentTimeMillis();
             System.out.format("Took %d ms in total\n", end-start);

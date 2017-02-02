@@ -5,22 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import core.Solution;
 import util.TreeRow;
 
-public class Problem18 {
-	
-	public Problem18(){
-		TreeRow t = generateTree("C:/Users/Kaspar/Workspace/Project Euler/src/inputfiles/Problem18");		
-		System.out.format("Result: %d\n", t.maxTotal(0));
-	}
-	
-	public static void main(String[] args) {
-		long start = System.currentTimeMillis();
-		new Problem18();		
-		
-		long end = System.currentTimeMillis();
-		System.out.format("Took %d ms in total\n", end-start);
-	}
+public class Problem18 implements Solution {
 	
 	public static TreeRow generateTree(String fn){
 		TreeRow r = null;        
@@ -57,5 +45,15 @@ public class Problem18 {
         }
 		return r;
 	}
-	
+
+	@Override
+	public int number() {
+		return 18;
+	}
+
+	@Override
+	public void solve() {
+		TreeRow t = generateTree("C:/Users/Kaspar/Workspace/Project Euler/src/inputfiles/Problem18");
+		System.out.format("Result: %d\n", t.maxTotal(0));
+	}
 }
